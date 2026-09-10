@@ -1,0 +1,64 @@
+<div id="star-container" class="aliens-star-canvas" aria-hidden="true"></div>
+<div class="aliens-ufo" aria-hidden="true">🛸</div>
+
+<script>
+  /* Starfield adapted from pvachek.cz/public/aliens/script.js. */
+  function initStarfield() {
+    const container = document.getElementById('star-container');
+    if (!container) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    container.appendChild(canvas);
+
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let stars: { x: number; y: number; size: number; speed: number }[] = [];
+    let animationFrame = 0;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = Array.from({ length: 800 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        speed: Math.random() * 0.5 + 0.2,
+      }));
+      drawStars();
+    }
+
+    const drawStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#67e8f9';
+      stars.forEach((star) => {
+        ctx.globalAlpha = Math.random() * 0.8 + 0.2;
+        ctx.fillRect(star.x, star.y, star.size, star.size);
+        if (!motionPreference.matches) {
+          star.y += star.speed;
+          if (star.y > canvas.height) star.y = 0;
+        }
+      });
+    };
+
+    function animateStars() {
+      if (motionPreference.matches || document.hidden) return;
+      drawStars();
+      animationFrame = requestAnimationFrame(animateStars);
+    }
+
+    function updateAnimation() {
+      cancelAnimationFrame(animationFrame);
+      if (motionPreference.matches || document.hidden) return;
+      animateStars();
+    }
+
+    resizeCanvas();
+    updateAnimation();
+    window.addEventListener('resize', resizeCanvas);
+    motionPreference.addEventListener('change', updateAnimation);
+    document.addEventListener('visibilitychange', updateAnimation);
+  }
+
+  initStarfield();
+</script>
