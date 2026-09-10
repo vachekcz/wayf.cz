@@ -1,0 +1,105 @@
+/* Background, navigation and footer adapted from pvachek.cz/public/aliens/. */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --green: #4ade80;
+  --cyan: #22d3ee;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: never;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  background: black;
+  color: var(--green);
+  overflow-x: hidden;
+}
+
+/* Green glow on the navigation logo */
+.neon-cyan {
+  color: var(--green);
+  text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+}
+
+@supports (background: -webkit-named-image(i)) {
+  .neon-cyan {
+    text-shadow:
+      0 0 10px rgba(34, 211, 238, 0.7),
+      0 0 20px rgba(34, 211, 238, 0.55),
+      0 0 40px rgba(34, 211, 238, 0.4);
+  }
+}
+
+/* Starfield canvas */
+.aliens-star-canvas { pointer-events: none; }
+.aliens-star-canvas canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+/* UFO */
+.aliens-ufo {
+  position: absolute;
+  top: 8rem;
+  right: 2rem;
+  font-size: 4.5rem;
+  animation: aliens-ufo-float 25s linear infinite;
+  pointer-events: none;
+}
+@media (min-width: 768px) { .aliens-ufo { right: 5rem; font-size: 6rem; } }
+@keyframes aliens-ufo-float {
+  0%   { transform: translateX(-200px) rotate(-10deg); }
+  100% { transform: translateX(calc(100vw + 200px)) rotate(10deg); }
+}
+
+/* ── Nav ─────────────────────────────────────────────── */
+.aliens-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+}
+.aliens-nav-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.aliens-nav-logo { font-size: 1.875rem; font-weight: 700; letter-spacing: 0.15em; text-decoration: none; }
+.aliens-nav-tagline { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; }
+
+@media (max-width: 768px) {
+  .aliens-nav-tagline { text-align: right; padding: 0.5rem 0 0 0.75rem; }
+}
+
+.aliens-nav-logo:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 6px;
+}
+
+.page-content { flex: 1; padding-top: 6rem; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.aliens-footer {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  color: var(--green);
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aliens-ufo { animation: none; }
+}

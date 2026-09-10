@@ -1,0 +1,36 @@
+---
+import Starfield from '../components/Starfield.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'WAYF — We Are Your Friends',
+  description = 'WAYF — We Are Your Friends.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  </head>
+  <body>
+    <Starfield />
+    <Header />
+    <main class="page-content" id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
