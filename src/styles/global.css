@@ -63,19 +63,6 @@ svg { display: block; }
 /* Decorations stay behind every interactive and content layer. */
 .aliens-star-canvas { position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.42; }
 .aliens-star-canvas canvas { display: block; }
-.space-decoration { position: absolute; inset: 0 0 auto; height: 640px; overflow: hidden; pointer-events: none; z-index: -1; }
-.aliens-ufo {
-  position: absolute;
-  top: 13rem;
-  right: max(3rem, calc((100vw - 1120px) / 2 + 4rem));
-  font-size: 5rem;
-  animation: aliens-ufo-float 25s linear infinite;
-}
-@keyframes aliens-ufo-float {
-  0% { transform: translateX(-200px) rotate(-10deg); }
-  100% { transform: translateX(calc(100vw + 200px)) rotate(10deg); }
-}
-
 /* Navigation works without a client-side menu. */
 .aliens-nav {
   position: sticky;
@@ -204,7 +191,6 @@ svg { display: block; }
   .hero-copy { max-width: 660px; }
   .hero h1 { font-size: clamp(4rem, 12vw, 6.5rem); }
   .hero-brand { display: none; }
-  .aliens-ufo { top: 10rem; font-size: 3.5rem; }
   .section { margin-top: 88px; }
   .section-heading { display: block; }
   .section-intro { margin-top: 20px; }
@@ -250,8 +236,4 @@ svg { display: block; }
   .aliens-footer { margin-top: 64px; }
   .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
   .footer-details { justify-content: flex-start; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aliens-ufo { animation: none; }
 }

@@ -50,7 +50,7 @@ Zkoušíme nápady, které lidem usnadňují den.
 
 **Sekundární odkaz:** Ozvat se → `#kontakt`.
 
-Úvod má ponechat prostor stávajícímu hvězdnému pozadí a UFO. Text musí být čitelný
+Úvod má ponechat prostor stávajícímu hvězdnému pozadí. Text musí být čitelný
 bez ohledu na polohu dekorací. Na běžném mobilu má být patrné, že pod úvodem
 pokračuje obsah; nepoužívat povinnou celoobrazovkovou výšku úvodu.
 
@@ -120,7 +120,7 @@ identitu provozovatele. Neopisovat soukromé podklady z vaultu do veřejné str�
 
 ## Vizuální zadání
 
-Navázat na vzhled, který už je v repu: černé pozadí, hvězdy, UFO, zelené a tyrkysové
+Navázat na vzhled, který už je v repu: černé pozadí, hvězdy, zelené a tyrkysové
 akcenty a retro typografie. Styl rozvinout do obsahových sekcí.
 
 - Maximální šířka hlavního obsahu přibližně 1120 px, na mobilu boční odsazení alespoň 20 px.

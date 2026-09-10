@@ -9,7 +9,7 @@ a [mobil 375 px](previews/mobile.png). Kontakt v těchto náhledech čeká na do
 ## Obsah a vzhled
 
 - Český úvod, tři projektové karty (Bertička, Arnoldek, Why We Decide), sekce O nás a připravený kontakt.
-- Finální vektorové logo, původní hvězdy a UFO, nové responzivní rozložení.
+- Finální vektorové logo, původní hvězdy, nové responzivní rozložení.
 - Navigace je na mobilu součástí běžného toku stránky, aby při zvětšení textu
   nezakrývala obsah. Od šířky 601 px zůstává přichycená nahoře.
 - Projekty jsou v `src/data/projects.ts`; kontakt a provozovatel
@@ -35,7 +35,7 @@ Zpětné odkazy v jednotlivých projektech nebyly měněny.
 - Chromium: šířky 375, 768 a 1440 px, standardní zobrazení, vypnutý JavaScript,
   zablokovaný externí font a zvětšení textu na 200 %.
 - Klávesnice: viditelný focus, přeskočení navigace a kotvy mimo hlavičku.
-- Omezení pohybu: UFO bez animace a hvězdy bez průběžného překreslování.
+- Omezení pohybu: hvězdy bez průběžného překreslování.
 
 ## Před zveřejněním
 
