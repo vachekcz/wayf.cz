@@ -1,7 +1,8 @@
 # Homepage v1 — stav implementace
 
-Ověřeno 2026-09-10. Připravená implementace podle [zadání](web-v1.md) zůstává
-ve vývojové větvi do doplnění veřejného kontaktu a identity provozovatele.
+Ověřeno 2026-09-10. Vlastník schválil merge a zveřejnění aktuální implementace
+podle [zadání](web-v1.md). Kontakt zůstává skrytý; veřejný e-mail a identita
+provozovatele se doplní následně.
 
 Náhledy lokálního produkčního buildu: [desktop 1440 px](previews/desktop.png)
 a [mobil 375 px](previews/mobile.png). Kontakt v těchto náhledech čeká na doplnění.
@@ -37,11 +38,11 @@ Zpětné odkazy v jednotlivých projektech nebyly měněny.
 - Klávesnice: viditelný focus, přeskočení navigace a kotvy mimo hlavičku.
 - Omezení pohybu: hvězdy bez průběžného překreslování.
 
-## Před zveřejněním
+## Navazující úkoly a ověření nasazení
 
 1. Doplnit a ověřit skutečný veřejný e-mail a přesné znění identity provozovatele.
    Potom zkontrolovat i vykreslený kontakt a `mailto:`.
-2. Uzavřít pracovní obsahové volby: češtinu a uvedené portfolio.
+2. Aktuálně schválený obsah: čeština a portfolio Bertička, Arnoldek, Why We Decide.
 3. Rozhodnout o doménových variantách. `wayf.cz` už má Cloudflare Custom Domain
    a úspěšný produkční CI smoke z předchozího nasazení. `www.wayf.cz` při kontrole
    zobrazovalo parkovací stránku; `weareyourfriends.cz` má samostatný starší web.
