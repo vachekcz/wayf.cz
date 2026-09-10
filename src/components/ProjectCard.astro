@@ -1,0 +1,44 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-card-top">
+    <span class="project-category">{project.category}</span>
+    <span class="project-number" aria-hidden="true">[{String(index + 1).padStart(2, '0')}]</span>
+  </div>
+  <div class="project-icon" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      {project.icon === 'food' && <>
+        <path d="M10 8v12a6 6 0 0 0 12 0V8M16 8v32M35 8c-6 5-7 12-7 17h7V8Zm0 17v15" />
+      </>}
+      {project.icon === 'movement' && <>
+        <path d="M16 24h16M8 18H5v12h3m32-12h3v12h-3" />
+        <rect x="8" y="12" width="8" height="24" rx="2" />
+        <rect x="32" y="12" width="8" height="24" rx="2" />
+      </>}
+      {project.icon === 'video' && <>
+        <rect x="5" y="12" width="38" height="28" rx="5" />
+        <path d="m17 5 7 7 7-7m-11 15 10 6-10 6V20Z" />
+      </>}
+      {project.icon === 'location' && <>
+        <path d="M38 19c0 11-14 23-14 23S10 30 10 19a14 14 0 1 1 28 0Z" />
+        <circle cx="24" cy="19" r="5" />
+      </>}
+    </svg>
+  </div>
+  <h3>{project.name}</h3>
+  <p>{project.description}</p>
+  {'note' in project && <p class="project-note">{project.note}</p>}
+  <a class="project-link" href={project.url} aria-label={`Otevřít projekt ${project.name} — ${project.domain}`}>
+    <span>Otevřít projekt <span aria-hidden="true">↗</span></span>
+    <span class="project-domain">{project.domain}</span>
+  </a>
+</article>

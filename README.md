@@ -2,7 +2,11 @@
 
 Statický web v **Astro + TypeScript + CSS**, nasazovaný na **Cloudflare Workers
 Static Assets** přes GitHub Actions. Vzhled vychází z `pvachek.cz/public/aliens/`:
-hvězdné pozadí s UFO, horní navigace a patička. Obsahová část je zatím prázdná.
+hvězdné pozadí s UFO, horní navigace a patička. Homepage představuje značku
+We Are Your Friends, čtyři projekty a hodnoty, které je spojují.
+
+Zadání obsahu a dokončení homepage: [Web v1](docs/web-v1.md).
+Průběh ověření a zbývající body: [Stav implementace](docs/homepage-v1-status.md).
 
 ## Lokální vývoj
 
@@ -29,15 +33,23 @@ Smoke můžeš nasměrovat na jinou adresu: `npm run smoke -- https://example.wo
 ## Struktura
 
 - `src/layouts/Layout.astro` — společná HTML kostra a metadata.
-- `src/components/` — pozadí, navigace a patička.
+- `src/components/` — pozadí, navigace, projektová karta a patička.
+- `src/data/projects.ts` — pořadí, texty a odkazy projektů.
+- `src/data/contact.ts` — potvrzený veřejný e-mail a identita provozovatele.
 - `src/pages/index.astro` — homepage; další stránky přidávej do `src/pages/`.
-- `src/styles/global.css` — původní neonový vzhled a responzivní rozložení.
-- `public/` — případné budoucí obrázky a soubory kopírované přímo do výstupu.
+- `src/styles/global.css` — neonový vzhled a responzivní rozložení.
+- `public/` — finální logo `weareyourfriends-logo-vector.svg`, favicon a náhled pro sdílení `og-image.png` (1200 × 630 px).
 - `wrangler.jsonc` — Worker `wayf-cz`, publikuje pouze `dist/`.
 
 Astro generuje statické HTML a malý skript hvězdného pole. Cloudflare adaptér ani
 serverový Worker skript nejsou potřeba. Font VT323 se načítá z Google Fonts;
 bez připojení se použije systémový monospace. Omezení pohybu zastaví animace.
+
+Kontakt doplň do `src/data/contact.ts` až po potvrzení veřejné adresy a identity
+provozovatele. Prázdný e-mail skryje celou kontaktní sekci, odkaz v navigaci
+i sekundární akci v úvodu. Prázdná identita se nevypisuje v patičce.
+Pro dokončení veřejné v1 jsou oba údaje podle zadání potřeba.
+Při změně portfolia aktualizuj také popis v layoutu, úvodní text a obrázek pro sdílení.
 
 ## CI a nasazení
 

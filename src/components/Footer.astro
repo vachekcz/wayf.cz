@@ -1,1 +1,16 @@
-<footer class="aliens-footer">WAYF © {new Date().getFullYear()} • WE ARE YOUR FRIENDS</footer>
+---
+import { contact } from '../data/contact';
+---
+
+<footer class="aliens-footer">
+  <div class="container footer-inner">
+    <a class="footer-brand" href="/" aria-label="WAYF — úvodní stránka">
+      <span class="footer-logo">WAYF</span>
+      <span>We Are Your Friends</span>
+    </a>
+    <div class="footer-details">
+      {contact.operator && <span>{contact.operator}</span>}
+      <span>© {new Date().getFullYear()} WAYF</span>
+    </div>
+  </div>
+</footer>

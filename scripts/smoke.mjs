@@ -9,6 +9,8 @@ const contentTypes = {
   '.html': 'text/html',
   '.css': 'text/css',
   '.js': /(?:application|text)\/javascript/,
+  '.png': 'image/png',
+  '.svg': 'image/svg\\+xml',
 };
 
 async function verifyFile(path) {
