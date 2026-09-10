@@ -17,20 +17,13 @@ export const projects = [
     note: 'Používání vyžaduje přihlášení e-mailem.',
   },
   {
-    name: 'El Pip',
-    category: 'Obsah',
-    description: 'Nová videa z vybraných YouTube kanálů na jednom místě. Vybírej si obsah podle sebe.',
-    url: 'https://elpip.com',
-    domain: 'elpip.com',
-    icon: 'video',
-  },
-  {
-    name: 'Khakham',
-    category: 'Na cestách',
-    description: 'Najdi veřejné WC ve svém okolí. Mapa, filtry a navigace, když je potřebuješ.',
-    url: 'https://khakham.com',
-    domain: 'khakham.com',
-    icon: 'location',
+    name: 'Why We Decide',
+    category: 'Sebepoznání',
+    description: 'Morální dilemata pro lepší pochopení vlastního rozhodování. Objev motivace, které stojí za tvými volbami.',
+    url: 'https://whywedecide.com',
+    domain: 'whywedecide.com',
+    icon: 'reflection',
+    note: 'Web je ve výstavbě.',
   },
 ] as const;
 

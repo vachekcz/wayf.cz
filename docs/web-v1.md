@@ -43,8 +43,8 @@ verze nejsou součástí tohoto zadání. Pro kontakt použít odkaz na e-mail.
 
 **Hlavní sdělení:** Tvoříme užitečné projekty pro každodenní život.
 
-**Doprovodný text:** Od jídla a pohybu po objevování obsahu a hledání nejbližšího
-WC. Zkoušíme nápady, které lidem usnadňují den.
+**Doprovodný text:** Od jídla a pohybu po porozumění vlastnímu rozhodování.
+Zkoušíme nápady, které lidem usnadňují den.
 
 **Primární odkaz:** Prozkoumat projekty → `#projekty`.
 
@@ -66,8 +66,10 @@ Výchozí pořadí a texty karet:
 | --- | --- | --- | --- |
 | Bertička | Jídlo | Jídelníček, recepty a přehled o tom, co jíš. Pomocník pro stravování podle tvých cílů. | https://berticka.com |
 | Arnoldek | Pohyb | Osobní fitness pomocník pro plánování tréninků podle tvých cílů a vybavení. | https://arnoldek.com |
-| El Pip | Obsah | Nová videa z vybraných YouTube kanálů na jednom místě. Vybírej si obsah podle sebe. | https://elpip.com |
-| Khakham | Na cestách | Najdi veřejné WC ve svém okolí. Mapa, filtry a navigace, když je potřebuješ. | https://khakham.com |
+| Why We Decide | Sebepoznání | Morální dilemata pro lepší pochopení vlastního rozhodování. Objev motivace, které stojí za tvými volbami. | https://whywedecide.com |
+
+Výběr upraven na přání vlastníka: El Pip a Khakham zatím vyřazené, Why We Decide
+přidaný s upozorněním „Web je ve výstavbě.“ podle stavu veřejného webu.
 
 Každá karta obsahuje kategorii, název, popis a viditelný odkaz `Otevřít projekt`
 s názvem domény. Přístupný název odkazu musí obsahovat i jméno projektu.
@@ -77,7 +79,7 @@ Na desktopu použít dvě karty vedle sebe, na úzkém mobilu jednu. Karty mají
 rovnocennou vizuální váhu. Pro v1 stačí typografie a jednoduchý dekorativní
 symbol vytvořený v CSS nebo SVG; screenshoty nejsou podmínkou spuštění.
 
-Obsah čtveřice vychází z projektového plánu. Před zveřejněním ověřit zařazení,
+Obsah portfolia vychází z projektového plánu a následného výběru vlastníka. Před zveřejněním ověřit zařazení,
 popis a funkčnost cílových webů, zejména dostupné funkce Arnoldka. Pokud některý
 projekt není připravený pro návštěvníky, vynechat jeho kartu a upravit související
 text v úvodu. Nepublikovat prázdné karty ani vymyšlené statistiky, reference nebo
@@ -137,7 +139,7 @@ akcenty a retro typografie. Styl rozvinout do obsahových sekcí.
 - Zachovat funkčnost při omezení pohybu, nedostupnosti externího fontu a zvětšení textu.
 - Seznam projektů držet na jednom místě jako jednoduchá data s názvem, kategorií, popisem a URL; nepřidávat CMS ani obecný systém konfigurace.
 - Rozšiřovat existující Astro komponenty a CSS. Nové závislosti nejsou pro tento rozsah potřeba.
-- Titulek: `WAYF | We Are Your Friends`. Meta popis: `Tvoříme užitečné projekty pro každodenní život. Objev Bertičku, Arnoldka, El Pip a Khakham.` Při změně portfolia upravit i tento text.
+- Titulek: `WAYF | We Are Your Friends`. Meta popis: `Tvoříme užitečné projekty pro každodenní život. Objev Bertičku, Arnoldka a Why We Decide.` Při změně portfolia upravit i tento text.
 - Zachovat canonical URL, doplnit Open Graph a metadata pro sdílení, skutečný obrázek náhledu 1200 × 630 px a favicon odpovídající značce. Použít absolutní produkční URL pro náhled.
 - Produkční stránka musí být indexovatelná. Funkční HTTPS, hlavní doména a přesměrování variant patří do ověření nasazení podle README.
 
@@ -159,7 +161,7 @@ kontroly samy o sobě neznamenají, že je web spuštěný.
 
 ## Volby potřebné před spuštěním
 
-- Potvrdit češtinu a výchozí čtveřici projektů včetně pořadí a textů.
+- Potvrdit finální české texty; aktuální portfolio tvoří Bertička, Arnoldek a Why We Decide.
 - Doplnit veřejný e-mail a identitu provozovatele; případně osobní medailonek.
 - Ověřit aktuální připojení `wayf.cz`, chování `www` a roli `weareyourfriends.cz`.
 

@@ -24,13 +24,9 @@ const { project, index } = Astro.props;
         <rect x="8" y="12" width="8" height="24" rx="2" />
         <rect x="32" y="12" width="8" height="24" rx="2" />
       </>}
-      {project.icon === 'video' && <>
-        <rect x="5" y="12" width="38" height="28" rx="5" />
-        <path d="m17 5 7 7 7-7m-11 15 10 6-10 6V20Z" />
-      </>}
-      {project.icon === 'location' && <>
-        <path d="M38 19c0 11-14 23-14 23S10 30 10 19a14 14 0 1 1 28 0Z" />
-        <circle cx="24" cy="19" r="5" />
+      {project.icon === 'reflection' && <>
+        <path d="M24 36V25m0 0L12 13m12 12 12-12M12 22V13h9m6 0h9v9" />
+        <circle cx="24" cy="40" r="4" />
       </>}
     </svg>
   </div>

@@ -8,7 +8,7 @@ a [mobil 375 px](previews/mobile.png). Kontakt v těchto náhledech čeká na do
 
 ## Obsah a vzhled
 
-- Český úvod, čtyři projektové karty, sekce O nás a připravený kontakt.
+- Český úvod, tři projektové karty (Bertička, Arnoldek, Why We Decide), sekce O nás a připravený kontakt.
 - Finální vektorové logo, původní hvězdy a UFO, nové responzivní rozložení.
 - Navigace je na mobilu součástí běžného toku stránky, aby při zvětšení textu
   nezakrývala obsah. Od šířky 601 px zůstává přichycená nahoře.
@@ -18,10 +18,9 @@ a [mobil 375 px](previews/mobile.png). Kontakt v těchto náhledech čeká na do
 
 ## Ověření projektů
 
-Všechny čtyři HTTPS adresy odpovídají. Bertička má veřejný český web, El Pip
-veřejný přehled kanálů a videí, Khakham veřejnou mapu s filtry. U Khakhamu byly
-ověřeny také odpověď API a implementace navigace; automatizovaný průchod celou
-interaktivní mapou nebyl dokončen.
+Bertička má veřejný český web. Why We Decide veřejně představuje morální dilemata
+a motivační profil; karta přebírá upozornění, že web je ve výstavbě. Cílové HTTPS
+adresy odpovídají. El Pip a Khakham byly na přání vlastníka zatím vyřazené.
 
 Arnoldek přesměruje na přihlášení e-mailem. Popis plánování podle cílů a vybavení
 byl ověřen také v jeho implementaci; karta na nutnost přihlášení upozorňuje.

@@ -3,7 +3,7 @@
 Statický web v **Astro + TypeScript + CSS**, nasazovaný na **Cloudflare Workers
 Static Assets** přes GitHub Actions. Vzhled vychází z `pvachek.cz/public/aliens/`:
 hvězdné pozadí s UFO, horní navigace a patička. Homepage představuje značku
-We Are Your Friends, čtyři projekty a hodnoty, které je spojují.
+We Are Your Friends, projekty Bertička, Arnoldek a Why We Decide a hodnoty, které je spojují.
 
 Zadání obsahu a dokončení homepage: [Web v1](docs/web-v1.md).
 Průběh ověření a zbývající body: [Stav implementace](docs/homepage-v1-status.md).
