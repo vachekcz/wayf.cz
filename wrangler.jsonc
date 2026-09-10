@@ -3,6 +3,13 @@
   "name": "wayf-cz",
   "compatibility_date": "2026-09-10",
   "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "wayf.cz",
+      "custom_domain": true,
+      "zone_name": "wayf.cz"
+    }
+  ],
   "assets": {
     "directory": "./dist"
   }
