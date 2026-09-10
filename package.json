@@ -13,13 +13,17 @@
     "preview": "wrangler dev",
     "deploy:check": "wrangler deploy --dry-run",
     "deploy": "wrangler deploy",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "deploy:preview": "wrangler versions upload",
+    "lighthouse": "lhci autorun",
+    "test:ci": "node --test scripts/ci/*.test.mjs"
   },
   "dependencies": {
     "astro": "7.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@lhci/cli": "0.15.1",
     "typescript": "6.0.3",
     "wrangler": "4.131.0"
   }

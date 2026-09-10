@@ -1,6 +1,14 @@
+---
+import { contact } from '../data/contact';
+---
+
 <nav class="aliens-nav" aria-label="Hlavní navigace">
   <div class="aliens-nav-inner">
-    <a class="aliens-nav-logo neon-cyan" href="/" aria-label="WAYF — úvodní stránka">WAYF</a>
-    <div class="aliens-nav-tagline">WE ARE YOUR FRIENDS</div>
+    <a class="aliens-nav-logo" href="/" aria-label="WAYF — úvodní stránka">WAYF</a>
+    <div class="nav-links">
+      <a href="#projekty">Projekty</a>
+      <a href="#o-nas">O nás</a>
+      {contact.email && <a href="#kontakt">Kontakt <span aria-hidden="true">↗</span></a>}
+    </div>
   </div>
 </nav>
