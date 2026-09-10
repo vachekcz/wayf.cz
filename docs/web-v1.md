@@ -32,7 +32,7 @@ verze nejsou součástí tohoto zadání. Pro kontakt použít odkaz na e-mail.
 
 ### 1. Navigace
 
-- Vlevo finální vektorové logo `public/weareyourfriends-logo-vector.svg` s odkazem na `/`; v navigaci už je zapojené.
+- Vlevo text WAYF s odkazem na `/`. Finální vektorové logo je napravo v úvodu místo původní kruhové grafiky.
 - Vpravo odkazy `Projekty`, `O nás`, `Kontakt` na `#projekty`, `#o-nas`, `#kontakt`.
 - Na mobilu odkazy zalomit nebo zjednodušit rozložení tak, aby zůstaly dostupné bez menu vyžadujícího JavaScript.
 - U pevné navigace nastavit odsazení kotev, aby nezakrývala nadpis cílové sekce.
@@ -127,7 +127,7 @@ akcenty a retro typografie. Styl rozvinout do obsahových sekcí.
 - Karty s tmavým podkladem a jemným okrajem, který oddělí obsah od hvězd. Glow používat střídmě, bez rozmazávání běžného textu.
 - Hover a focus jasně zvýrazní aktivní odkaz; význam se nesmí předávat jen barvou.
 - Respektovat existující omezení pohybu. Nepřidávat další souvislé animace ani pohyb potřebný k pochopení obsahu.
-- Použít finální logo `public/weareyourfriends-logo-vector.svg`: tři postavy na oblouku s paprsky a nápisem WE ARE YOUR FRIENDS. Soubor je přesná kopie kanonického SVG z projektových podkladů. V navigaci se původní černá kresba zobrazuje bíle pomocí CSS filtru; zachovat proporce a čitelnost na tmavém pozadí.
+- Použít finální logo `public/weareyourfriends-logo-vector.svg`: tři postavy na oblouku s paprsky a nápisem WE ARE YOUR FRIENDS. Soubor je přesná kopie kanonického SVG z projektových podkladů. V pravé části úvodu se původní černá kresba zobrazuje bíle pomocí CSS filtru; zachovat proporce a čitelnost na tmavém pozadí. Na užších obrazovkách se dekorativní logo skrývá stejně jako původní kruhová grafika.
 
 ## Technické požadavky
 

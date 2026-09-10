@@ -134,11 +134,10 @@ svg { display: block; }
 .button span, .text-link span { font-size: 1.4rem; line-height: 1; }
 .text-link { font-size: 1rem; text-underline-offset: 6px; }
 .text-link:hover { color: var(--green); text-decoration-thickness: 2px; }
-.hero-orbit { position: relative; padding: 16px; color: var(--green); opacity: 0.8; }
-.hero-orbit svg { width: 100%; stroke: #345842; stroke-width: 1; }
-.hero-orbit .orbit-star { stroke: var(--green); stroke-width: 2; }
-.hero-orbit .orbit-point { fill: var(--cyan); stroke: none; }
-.orbit-caption { display: block; margin-top: 20px; text-align: center; font-family: var(--retro); font-size: 1.125rem; letter-spacing: 0.08em; line-height: 1.35; }
+.hero-brand { position: relative; padding: 16px; color: var(--green); }
+/* Display the original black vector in white on the dark background. */
+.hero-brand img { display: block; width: 100%; height: auto; filter: brightness(0) invert(1); }
+.hero-caption { display: block; margin-top: 20px; text-align: center; font-family: var(--retro); font-size: 1.125rem; letter-spacing: 0.08em; line-height: 1.35; }
 
 /* Portfolio */
 .section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px; }
@@ -204,7 +203,7 @@ svg { display: block; }
   .hero { grid-template-columns: 1fr; padding-top: 56px; }
   .hero-copy { max-width: 660px; }
   .hero h1 { font-size: clamp(4rem, 12vw, 6.5rem); }
-  .hero-orbit { display: none; }
+  .hero-brand { display: none; }
   .aliens-ufo { top: 10rem; font-size: 3.5rem; }
   .section { margin-top: 88px; }
   .section-heading { display: block; }
