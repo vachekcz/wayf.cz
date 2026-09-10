@@ -64,10 +64,13 @@ Environment `production` má povolovat deploy pouze z větve `main`. V ochraně
 `main` vyžaduj PR a check `CI Passed`. Konfiguraci doplň před prvním mergem,
 jinak se deploy zastaví na chybějícím nastavení. Hodnoty tokenů nepatří do repozitáře.
 
-Doména `wayf.cz` při přípravě projektu používá DNS u Gransy. Její připojení je
-samostatný krok: přenést DNS záznamy do Cloudflare, aktivovat zónu změnou
-nameserverů a přidat Workers Custom Domain. Přesměrování `www` na `wayf.cz`
-se nastavuje zvlášť. `site` v Astro konfiguraci určuje canonical URL; DNS nemění.
+`wrangler.jsonc` připojuje `wayf.cz` jako Workers Custom Domain; routu spravuje
+každý deploy z CI. Adresa `wayf-cz.pvpvpv.workers.dev` zůstává dostupná.
+Pro veřejné směrování musí doména používat nameservery své Cloudflare zóny:
+`lady.ns.cloudflare.com` a `luke.ns.cloudflare.com`. Jejich nastavení u registrátora
+není součástí deploye. `DEPLOY_URL` nastav na `https://wayf.cz`, až na ní projde
+smoke kontrola; do té doby ověřuje `workers.dev`. Přesměrování `www` se nastavuje
+zvlášť. `site` v Astro konfiguraci určuje canonical URL; DNS nemění.
 
 Dokumentace: [Astro](https://docs.astro.build/),
 [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/),
