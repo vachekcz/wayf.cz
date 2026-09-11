@@ -2,7 +2,7 @@
 
 Statický web v **Astro + TypeScript + CSS**, nasazovaný na **Cloudflare Workers
 Static Assets** přes GitHub Actions. Vzhled vychází z `pvachek.cz/public/aliens/`:
-hvězdné pozadí, horní navigace a patička. Homepage představuje značku
+hvězdné pozadí a patička. Homepage představuje značku
 We Are Your Friends, projekty Bertička, Arnoldek a Why We Decide a hodnoty, které je spojují.
 
 Zadání obsahu a dokončení homepage: [Web v1](docs/web-v1.md).
@@ -36,7 +36,7 @@ Smoke můžeš nasměrovat na jinou adresu: `npm run smoke -- https://example.wo
 ## Struktura
 
 - `src/layouts/Layout.astro` — společná HTML kostra a metadata.
-- `src/components/` — pozadí, navigace, projektová karta a patička.
+- `src/components/` — pozadí, projektová karta a patička.
 - `src/data/projects.ts` — pořadí, texty a odkazy projektů.
 - `src/data/contact.ts` — potvrzený veřejný e-mail a identita provozovatele.
 - `src/pages/index.astro` — homepage; další stránky přidávej do `src/pages/`.
@@ -49,7 +49,7 @@ serverový Worker skript nejsou potřeba. Font VT323 se načítá z Google Fonts
 bez připojení se použije systémový monospace. Omezení pohybu zastaví animace.
 
 Kontakt doplň do `src/data/contact.ts` až po potvrzení veřejné adresy a identity
-provozovatele. Prázdný e-mail skryje celou kontaktní sekci, odkaz v navigaci
+provozovatele. Prázdný e-mail skryje celou kontaktní sekci
 i sekundární akci v úvodu. Prázdná identita se nevypisuje v patičce.
 Pro dokončení veřejné v1 jsou oba údaje podle zadání potřeba.
 Při změně portfolia aktualizuj také popis v layoutu, úvodní text a obrázek pro sdílení.

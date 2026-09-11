@@ -11,8 +11,7 @@ a [mobil 375 px](previews/mobile.png). Kontakt v těchto náhledech čeká na do
 
 - Český úvod, tři projektové karty (Bertička, Arnoldek, Why We Decide), sekce O nás a připravený kontakt.
 - Finální vektorové logo, původní hvězdy, nové responzivní rozložení.
-- Navigace je na mobilu součástí běžného toku stránky, aby při zvětšení textu
-  nezakrývala obsah. Od šířky 601 px zůstává přichycená nahoře.
+- Stránka začíná rovnou úvodem bez horní hlavičky a navigace. Logo je vpravo v úvodu.
 - Projekty jsou v `src/data/projects.ts`; kontakt a provozovatel
   v `src/data/contact.ts`. Prázdný kontakt se nevykresluje ani neodkazuje.
 - Metadata, canonical, SVG favicon a skutečný PNG náhled 1200 × 630 px.
@@ -35,7 +34,7 @@ Zpětné odkazy v jednotlivých projektech nebyly měněny.
   odpovídají buildu a mají správné typy; neexistující cesta vrací 404.
 - Chromium: šířky 375, 768 a 1440 px, standardní zobrazení, vypnutý JavaScript,
   zablokovaný externí font a zvětšení textu na 200 %.
-- Klávesnice: viditelný focus, přeskočení navigace a kotvy mimo hlavičku.
+- Klávesnice: viditelný focus a funkční odkazy na sekce.
 - Omezení pohybu: hvězdy bez průběžného překreslování.
 
 ## Navazující úkoly a ověření nasazení

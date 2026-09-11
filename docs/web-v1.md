@@ -21,7 +21,7 @@ v první implementaci; čeština ani konečný výběr portfolia dosud nejsou Pa
 
 Repo již obsahuje Astro, TypeScript, CSS, statický build a konfiguraci nasazení
 na Cloudflare Workers Static Assets. Použít existující komponenty `Layout`,
-`Starfield`, `Header` a `Footer`. Homepage `src/pages/index.astro` je zatím prázdná.
+`Starfield` a `Footer`. Homepage je v `src/pages/index.astro`.
 Vývojové příkazy a proces nasazení popisuje [README](../README.md).
 
 Rozsah v1: homepage, metadata, favicon a obrázek pro sdílení. Zachovat statický
@@ -30,12 +30,11 @@ verze nejsou součástí tohoto zadání. Pro kontakt použít odkaz na e-mail.
 
 ## Struktura stránky a návrh textů
 
-### 1. Navigace
+### 1. Začátek stránky
 
-- Vlevo text WAYF s odkazem na `/`. Finální vektorové logo je napravo v úvodu místo původní kruhové grafiky.
-- Vpravo odkazy `Projekty`, `O nás`, `Kontakt` na `#projekty`, `#o-nas`, `#kontakt`.
-- Na mobilu odkazy zalomit nebo zjednodušit rozložení tak, aby zůstaly dostupné bez menu vyžadujícího JavaScript.
-- U pevné navigace nastavit odsazení kotev, aby nezakrývala nadpis cílové sekce.
+Stránka začíná rovnou úvodem, bez horní hlavičky a navigační lišty.
+Logo zůstává vpravo v úvodu, odkazy na projekty a kontakt jsou přímo v obsahu.
+Kotvy mají malé odsazení od horního okraje; není potřeba prostor pro pevnou navigaci.
 
 ### 2. Úvod
 
@@ -112,7 +111,7 @@ Napiš nám.
 
 Zobrazit skutečnou veřejnou e-mailovou adresu jako odkaz `mailto:`. Adresa zatím
 není zadaná; nevymýšlet `hello@wayf.cz` ani jinou schránku. Do implementace připravit
-jedno místo pro její doplnění. Bez adresy kontaktní obsah a navigační odkaz skrýt;
+jedno místo pro její doplnění. Bez adresy kontaktní obsah a sekundární odkaz v úvodu skrýt;
 pro kompletní v1 je doplnění a ověření kontaktu podmínkou spuštění.
 
 Patička zachová WAYF, plný název značky a dynamický rok. Doplnit potvrzenou veřejnou
@@ -134,7 +133,7 @@ akcenty a retro typografie. Styl rozvinout do obsahových sekcí.
 ## Technické požadavky
 
 - Hlavní obsah je ve statickém HTML a všechny odkazy fungují i bez JavaScriptu.
-- Použít jediný H1, logické H2/H3, sémantické sekce, viditelný focus a odkaz pro přeskočení navigace.
+- Použít jediný H1, logické H2/H3, sémantické sekce a viditelný focus. Hlavní obsah začíná bez předřazené navigace.
 - Dekorace mají být skryté před čtečkou obrazovky. Obsahové obrázky mají popis a známé rozměry.
 - Zachovat funkčnost při omezení pohybu, nedostupnosti externího fontu a zvětšení textu.
 - Seznam projektů držet na jednom místě jako jednoduchá data s názvem, kategorií, popisem a URL; nepřidávat CMS ani obecný systém konfigurace.
@@ -149,7 +148,7 @@ Implementace je hotová, když:
 
 - Homepage obsahuje všechny dohodnuté sekce, finální texty a potvrzené projekty bez placeholderů.
 - Každý projektový odkaz otevře odpovídající veřejný web a kontakt používá správnou adresu.
-- Na šířkách 375, 768 a 1440 px nic nepřetéká, navigace nepřekrývá obsah a karty se správně skládají.
+- Na šířkách 375, 768 a 1440 px nic nepřetéká a karty se správně skládají.
 - Stránku lze projít klávesnicí, focus je viditelný a obsah funguje bez JavaScriptu i při omezení pohybu.
 - Metadata a obrázek pro sdílení odpovídají finálnímu obsahu a načítají se bez chyby.
 - Projdou existující `npm run check`, `npm run build`, `npm run deploy:check` a `npm run smoke` proti běžícímu `npm run preview`.

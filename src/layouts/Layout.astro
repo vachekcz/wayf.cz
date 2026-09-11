@@ -1,6 +1,5 @@
 ---
 import Starfield from '../components/Starfield.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
@@ -45,10 +44,8 @@ const shareImageUrl = new URL('/og-image.png', Astro.site);
     <meta name="twitter:image:alt" content="WAYF — We Are Your Friends. Užitečné projekty pro každodenní život." />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Přeskočit na obsah</a>
     <Starfield />
-    <Header />
-    <main class="page-content" id="main-content" tabindex="-1">
+    <main class="page-content" id="main-content">
       <slot />
     </main>
     <Footer />
