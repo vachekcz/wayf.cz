@@ -45,8 +45,33 @@ Smoke můžeš nasměrovat na jinou adresu: `npm run smoke -- https://example.wo
 - `wrangler.jsonc` — Worker `wayf-cz`, publikuje pouze `dist/`.
 
 Astro generuje statické HTML a malý skript hvězdného pole. Cloudflare adaptér ani
-serverový Worker skript nejsou potřeba. Font VT323 se načítá z Google Fonts;
-bez připojení se použije systémový monospace. Omezení pohybu zastaví animace.
+serverový Worker skript nejsou potřeba. Font VT323 se načítá lokálně ze dvou WOFF2
+sad v `src/assets/fonts/`, včetně českých znaků. Latin sada se přednačítá pro hlavní
+nadpis; soubory dostávají hash při buildu. Původ fontu je v `SOURCE.md`, licence
+se publikuje na `/fonts/VT323-OFL.txt`. Omezení pohybu zastaví animace.
+
+## SEO
+
+Layout obsahuje canonical URL, metadata pro sdílení a na homepage JSON-LD `WebSite`
+s názvem We Are Your Friends a alternativou WAYF. Identitu provozovatele ani
+`Person` / `Organization` zatím nedoplňujeme bez potvrzených údajů — viz
+[issue #5](https://github.com/vachekcz/wayf.cz/issues/5). Zpětné propojení vlastních
+projektů sleduje [issue #6](https://github.com/vachekcz/wayf.cz/issues/6).
+
+`@astrojs/sitemap` při každém buildu automaticky zahrne statické stránky a vytvoří
+`/sitemap-index.xml` a `/sitemap-0.xml`. Nové stránky přidávej do `src/pages/`;
+neveřejné stránky případně vyřaď přes `filter` v integraci. URL vycházejí ze `site`
+v `astro.config.mjs`, takže preview do sitemap neposílá své adresy. Endpoint
+`src/pages/robots.txt.ts` generuje povolení procházení a odkaz na sitemap index.
+Cloudflare může před `robots.txt` připojit vlastní pravidla; produkční smoke proto
+ověřuje neporušený konec souboru z buildu. U ostatních souborů porovnává celý obsah.
+
+Google Search Console již spravuje majitel. Pro odeslání sitemapy použij
+`https://wayf.cz/sitemap-index.xml`; vyhodnocení indexace a dotazů naváže na jeho data.
+
+V Cloudflare zóně `wayf.cz` je zapnuté **Always Use HTTPS**: HTTP požadavky vrací
+301 na HTTPS se zachováním cesty a parametrů. Toto nastavení je na úrovni zóny,
+Wrangler ho nespravuje. Produkční smoke ověřuje i toto přesměrování.
 
 Kontakt doplň do `src/data/contact.ts` až po potvrzení veřejné adresy a identity
 provozovatele. Prázdný e-mail skryje celou kontaktní sekci
