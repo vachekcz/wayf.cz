@@ -121,7 +121,6 @@ svg { display: block; }
 .project-icon svg { width: 100%; height: 100%; }
 .project-card h3 { max-width: 100%; font-size: 3.25rem; margin-top: 20px; }
 .project-card > p { color: var(--muted); margin-top: 12px; margin-bottom: 32px; }
-.project-card > .project-note { margin-top: -16px; font-size: 0.875rem; }
 .project-link { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 8px 16px; width: 100%; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text); font-size: 1rem; text-decoration: none; }
 .project-link > span:first-child { text-decoration: underline; text-underline-offset: 5px; }
 .project-link:hover > span:first-child { color: var(--green); text-decoration-thickness: 2px; }

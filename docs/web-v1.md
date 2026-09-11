@@ -68,7 +68,7 @@ Výchozí pořadí a texty karet:
 | Why We Decide | Sebepoznání | Morální dilemata pro lepší pochopení vlastního rozhodování. Objev motivace, které stojí za tvými volbami. | https://whywedecide.com |
 
 Výběr upraven na přání vlastníka: El Pip a Khakham zatím vyřazené, Why We Decide
-přidaný s upozorněním „Web je ve výstavbě.“ podle stavu veřejného webu.
+přidaný do portfolia. Poznámky o výstavbě webu a přihlašování na kartách nezobrazovat.
 
 Každá karta obsahuje kategorii, název, popis a viditelný odkaz `Otevřít projekt`
 s názvem domény. Přístupný název odkazu musí obsahovat i jméno projektu.

@@ -14,7 +14,6 @@ export const projects = [
     url: 'https://arnoldek.com',
     domain: 'arnoldek.com',
     icon: 'movement',
-    note: 'Používání vyžaduje přihlášení e-mailem.',
   },
   {
     name: 'Why We Decide',
@@ -23,7 +22,6 @@ export const projects = [
     url: 'https://whywedecide.com',
     domain: 'whywedecide.com',
     icon: 'reflection',
-    note: 'Web je ve výstavbě.',
   },
 ] as const;
 
