@@ -60,7 +60,7 @@ async function verifyDirectory(relativePath = '') {
     if (entry.isDirectory()) {
       await verifyDirectory(`${path}/`);
     } else if (entry.isFile()) {
-      if (path === 'index.html' || path === '_headers' || path === '_redirects') continue;
+      if (path === 'index.html' || path === '_headers') continue;
       await verifyFile(path);
     }
   }
@@ -73,19 +73,24 @@ await withRetry(async () => {
     redirect: 'manual',
     signal: AbortSignal.timeout(5000),
   });
-  assert.equal(response.status, 301, 'Sitemap alias must permanently redirect');
-  assert.equal(
-    new URL(response.headers.get('location') ?? '', baseUrl).href,
-    new URL('/sitemap-index.xml', baseUrl).href,
-    'Sitemap alias must redirect to the sitemap index on the same origin',
-  );
+  assert.equal(response.status, 200, 'Sitemap must be served directly without a redirect');
+  assert.equal(response.headers.get('location'), null, 'Sitemap must not have a redirect target');
+  const xml = await response.text();
+  assert.match(xml, /<urlset\b/, 'Sitemap must contain page URLs');
+  assert.match(xml, /<loc>https:\/\/wayf\.cz\/<\/loc>/, 'Sitemap must include the canonical homepage');
+  assert.doesNotMatch(xml, /<sitemapindex\b/, 'Sitemap must not be an index');
 });
-console.log('PASS sitemap.xml redirects to the sitemap index');
-const missing = await fetch(new URL('/__wayf_smoke_missing__', baseUrl), {
-  signal: AbortSignal.timeout(5000),
-});
-assert.equal(missing.status, 404, 'Unknown paths must return 404');
-console.log('PASS unknown path returns 404');
+console.log('PASS sitemap.xml serves page URLs directly');
+for (const path of ['/__wayf_smoke_missing__', '/sitemap-index.xml', '/sitemap-0.xml']) {
+  await withRetry(async () => {
+    const response = await fetch(new URL(path, baseUrl), {
+      redirect: 'manual',
+      signal: AbortSignal.timeout(5000),
+    });
+    assert.equal(response.status, 404, `Removed or unknown path must return 404: ${path}`);
+  });
+  console.log(`PASS ${path} returns 404`);
+}
 
 if (baseUrl.hostname === 'wayf.cz') {
   const path = '/__wayf_https_check__?source=smoke&value=a%2Fb';

@@ -58,18 +58,19 @@ s názvem We Are Your Friends a alternativou WAYF. Identitu provozovatele ani
 [issue #5](https://github.com/vachekcz/wayf.cz/issues/5). Zpětné propojení vlastních
 projektů sleduje [issue #6](https://github.com/vachekcz/wayf.cz/issues/6).
 
-`@astrojs/sitemap` při každém buildu automaticky zahrne statické stránky a vytvoří
-`/sitemap-index.xml` a `/sitemap-0.xml`. Nové stránky přidávej do `src/pages/`;
-neveřejné stránky případně vyřaď přes `filter` v integraci. URL vycházejí ze `site`
+Integrace `src/integrations/sitemap.ts` při každém buildu převezme seznam vygenerovaných
+stránek z Astra a pomocí knihovny `sitemap` vytvoří jediný `/sitemap.xml` se seznamem
+URL. Soubor se servíruje přímo s HTTP 200, bez přesměrování nebo sitemap indexu.
+Nové stránky přidávej do `src/pages/`; chybové stránky 404 a 500 integrace vynechává,
+neveřejné stránky případně vyřaď ve stejném filtru. URL vycházejí ze `site`
 v `astro.config.mjs`, takže preview do sitemap neposílá své adresy. Endpoint
-`src/pages/robots.txt.ts` generuje povolení procházení a odkaz na sitemap index.
-Adresa `/sitemap.xml` přes `public/_redirects` trvale přesměrovává na sitemap index;
-smoke ověřuje přesměrování i obsah cílových XML souborů.
+`src/pages/robots.txt.ts` generuje povolení procházení a odkaz na `/sitemap.xml`.
+Smoke ověřuje přímou odpověď i obsah XML souboru.
 Cloudflare může před `robots.txt` připojit vlastní pravidla; produkční smoke proto
 ověřuje neporušený konec souboru z buildu. U ostatních souborů porovnává celý obsah.
 
 Google Search Console již spravuje majitel. Pro odeslání sitemapy použij
-`https://wayf.cz/sitemap-index.xml`; vyhodnocení indexace a dotazů naváže na jeho data.
+`https://wayf.cz/sitemap.xml`; vyhodnocení indexace a dotazů naváže na jeho data.
 
 V Cloudflare zóně `wayf.cz` je zapnuté **Always Use HTTPS**: HTTP požadavky vrací
 301 na HTTPS se zachováním cesty a parametrů. Toto nastavení je na úrovni zóny,
