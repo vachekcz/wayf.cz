@@ -19,8 +19,8 @@
     "test:ci": "node --test scripts/ci/*.test.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.4",
-    "astro": "7.3.2"
+    "astro": "7.3.2",
+    "sitemap": "9.0.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",

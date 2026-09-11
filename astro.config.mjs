@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+import sitemap from './src/integrations/sitemap';
 
 export default defineConfig({
   site: 'https://wayf.cz',
