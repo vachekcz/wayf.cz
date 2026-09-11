@@ -12,6 +12,9 @@ const contentTypes = {
   '.js': /(?:application|text)\/javascript/,
   '.png': 'image/png',
   '.svg': 'image/svg\\+xml',
+  '.xml': /(?:application|text)\/xml/,
+  '.txt': 'text/plain',
+  '.woff2': 'font/woff2',
 };
 
 async function verifyFile(path) {
@@ -31,7 +34,11 @@ async function verifyFile(path) {
         assert.match(response.headers.get('content-type') ?? '', new RegExp(contentType));
       }
       const actual = Buffer.from(await response.arrayBuffer());
-      assert.ok(actual.equals(expected), `Deployed content differs from the build: ${url}`);
+      // Cloudflare can prepend managed crawler rules to the site's robots.txt.
+      const matches = path === 'robots.txt' && baseUrl.hostname === 'wayf.cz'
+        ? actual.toString('utf8').endsWith(expected.toString('utf8'))
+        : actual.equals(expected);
+      assert.ok(matches, `Deployed content differs from the build: ${url}`);
       console.log(`PASS ${url.pathname}`);
       return;
     } catch (error) {
@@ -60,3 +67,14 @@ const missing = await fetch(new URL('/__wayf_smoke_missing__', baseUrl), {
 });
 assert.equal(missing.status, 404, 'Unknown paths must return 404');
 console.log('PASS unknown path returns 404');
+
+if (baseUrl.hostname === 'wayf.cz') {
+  const path = '/__wayf_https_check__?source=smoke&value=a%2Fb';
+  const response = await fetch(`http://wayf.cz${path}`, {
+    redirect: 'manual',
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.ok([301, 308].includes(response.status), 'HTTP must permanently redirect to HTTPS');
+  assert.equal(response.headers.get('location'), `https://wayf.cz${path}`, 'HTTPS redirect must preserve path and query');
+  console.log('PASS HTTP permanently redirects to HTTPS');
+}

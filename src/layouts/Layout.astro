@@ -1,6 +1,7 @@
 ---
 import Starfield from '../components/Starfield.astro';
 import Footer from '../components/Footer.astro';
+import retroFontUrl from '../assets/fonts/vt323-latin-400-normal.woff2?url';
 import '../styles/global.css';
 
 interface Props {
@@ -9,12 +10,21 @@ interface Props {
 }
 
 const {
-  title = 'WAYF | We Are Your Friends',
+  title = 'We Are Your Friends (WAYF) — naše projekty',
   description = 'Tvoříme užitečné projekty pro každodenní život. Objev Bertičku, Arnoldka a Why We Decide.',
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const shareImageUrl = new URL('/og-image.png', Astro.site);
+const websiteData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': new URL('/#website', Astro.site).href,
+  url: new URL('/', Astro.site).href,
+  name: 'We Are Your Friends',
+  alternateName: 'WAYF',
+  inLanguage: 'cs',
+};
 ---
 
 <!DOCTYPE html>
@@ -27,8 +37,13 @@ const shareImageUrl = new URL('/og-image.png', Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={retroFontUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    {Astro.url.pathname === '/' && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteData).replace(/</g, '\\u003c')} />
+    )}
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="WAYF" />
+    <meta property="og:site_name" content="We Are Your Friends" />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
