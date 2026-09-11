@@ -32,7 +32,6 @@ const { project, index } = Astro.props;
   </div>
   <h3>{project.name}</h3>
   <p>{project.description}</p>
-  {'note' in project && <p class="project-note">{project.note}</p>}
   <a class="project-link" href={project.url} aria-label={`Otevřít projekt ${project.name} — ${project.domain}`}>
     <span>Otevřít projekt <span aria-hidden="true">↗</span></span>
     <span class="project-domain">{project.domain}</span>
