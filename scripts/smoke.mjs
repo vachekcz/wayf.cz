@@ -17,35 +17,41 @@ const contentTypes = {
   '.woff2': 'font/woff2',
 };
 
-async function verifyFile(path) {
-  const expected = await readFile(new URL(path, directory));
-  const url = new URL(path === 'index.html' ? '/' : `/${path}`, baseUrl);
-
+async function withRetry(check) {
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
-      assert.equal(response.status, 200, `Unexpected status for ${url}`);
-      if (path === 'index.html') {
-        const noindex = /\bnoindex\b/i.test(response.headers.get('x-robots-tag') ?? '');
-        assert.equal(noindex, baseUrl.hostname.endsWith('.workers.dev'), 'Unexpected indexing policy');
-      }
-      const contentType = contentTypes[extname(path)];
-      if (contentType) {
-        assert.match(response.headers.get('content-type') ?? '', new RegExp(contentType));
-      }
-      const actual = Buffer.from(await response.arrayBuffer());
-      // Cloudflare can prepend managed crawler rules to the site's robots.txt.
-      const matches = path === 'robots.txt' && baseUrl.hostname === 'wayf.cz'
-        ? actual.toString('utf8').endsWith(expected.toString('utf8'))
-        : actual.equals(expected);
-      assert.ok(matches, `Deployed content differs from the build: ${url}`);
-      console.log(`PASS ${url.pathname}`);
+      await check();
       return;
     } catch (error) {
       if (attempt === attempts) throw error;
       await setTimeout(2000);
     }
   }
+}
+
+async function verifyFile(path) {
+  const expected = await readFile(new URL(path, directory));
+  const url = new URL(path === 'index.html' ? '/' : `/${path}`, baseUrl);
+
+  await withRetry(async () => {
+    const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    assert.equal(response.status, 200, `Unexpected status for ${url}`);
+    if (path === 'index.html') {
+      const noindex = /\bnoindex\b/i.test(response.headers.get('x-robots-tag') ?? '');
+      assert.equal(noindex, baseUrl.hostname.endsWith('.workers.dev'), 'Unexpected indexing policy');
+    }
+    const contentType = contentTypes[extname(path)];
+    if (contentType) {
+      assert.match(response.headers.get('content-type') ?? '', new RegExp(contentType));
+    }
+    const actual = Buffer.from(await response.arrayBuffer());
+    // Cloudflare can prepend managed crawler rules to the site's robots.txt.
+    const matches = path === 'robots.txt' && baseUrl.hostname === 'wayf.cz'
+      ? actual.toString('utf8').endsWith(expected.toString('utf8'))
+      : actual.equals(expected);
+    assert.ok(matches, `Deployed content differs from the build: ${url}`);
+    console.log(`PASS ${url.pathname}`);
+  });
 }
 
 async function verifyDirectory(relativePath = '') {
@@ -70,11 +76,13 @@ console.log('PASS unknown path returns 404');
 
 if (baseUrl.hostname === 'wayf.cz') {
   const path = '/__wayf_https_check__?source=smoke&value=a%2Fb';
-  const response = await fetch(`http://wayf.cz${path}`, {
-    redirect: 'manual',
-    signal: AbortSignal.timeout(5000),
+  await withRetry(async () => {
+    const response = await fetch(`http://wayf.cz${path}`, {
+      redirect: 'manual',
+      signal: AbortSignal.timeout(5000),
+    });
+    assert.ok([301, 308].includes(response.status), 'HTTP must permanently redirect to HTTPS');
+    assert.equal(response.headers.get('location'), `https://wayf.cz${path}`, 'HTTPS redirect must preserve path and query');
   });
-  assert.ok([301, 308].includes(response.status), 'HTTP must permanently redirect to HTTPS');
-  assert.equal(response.headers.get('location'), `https://wayf.cz${path}`, 'HTTPS redirect must preserve path and query');
   console.log('PASS HTTP permanently redirects to HTTPS');
 }

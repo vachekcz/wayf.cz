@@ -37,7 +37,6 @@ const websiteData = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" href={retroFontUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     {Astro.url.pathname === '/' && (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteData).replace(/</g, '\\u003c')} />
