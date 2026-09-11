@@ -12,7 +12,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-padding-top: 8rem; }
+html { scroll-padding-top: 24px; }
 body {
   margin: 0;
   min-width: 280px;
@@ -48,54 +48,9 @@ svg { display: block; }
   text-transform: uppercase;
 }
 .title-period { color: var(--green); }
-.skip-link {
-  position: fixed;
-  top: 12px;
-  left: 24px;
-  z-index: 100;
-  padding: 10px 18px;
-  color: #020604;
-  background: var(--green);
-  transform: translateY(-200%);
-}
-.skip-link:focus { transform: translateY(0); }
-
 /* Decorations stay behind every interactive and content layer. */
 .aliens-star-canvas { position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.42; }
 .aliens-star-canvas canvas { display: block; }
-/* Navigation works without a client-side menu. */
-.aliens-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(2, 6, 4, 0.94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.aliens-nav-inner {
-  width: min(1120px, calc(100% - 48px));
-  min-height: 88px;
-  margin-inline: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px 32px;
-  padding-block: 18px;
-}
-.aliens-nav-logo {
-  color: var(--green);
-  font-family: var(--retro);
-  font-size: 2.5rem;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
-}
-.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; }
-.nav-links a { font-size: 1rem; text-underline-offset: 6px; text-decoration-color: transparent; }
-.nav-links a:hover { color: var(--green); text-decoration-color: currentColor; }
-.nav-links a span { color: var(--green); margin-left: 4px; }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.6fr 1fr; align-items: center; padding-top: 80px; }
@@ -201,14 +156,7 @@ svg { display: block; }
 }
 
 @media (max-width: 600px) {
-  html { scroll-padding-top: 24px; }
-  .aliens-nav { position: relative; }
-  .container, .aliens-nav-inner { width: calc(100% - 40px); }
-  .aliens-nav-inner { min-height: 76px; gap: 12px 20px; padding-block: 16px; }
-  .aliens-nav-logo { font-size: 2rem; }
-  .nav-links { gap: 10px 18px; }
-  .nav-links a { font-size: 0.9375rem; }
-  .nav-links a span { display: none; }
+  .container { width: calc(100% - 40px); }
   .hero { padding-top: 40px; }
   .hero .eyebrow { font-size: 1.0625rem; letter-spacing: 0.04em; }
   .hero h1 { font-size: clamp(3rem, 13.9vw, 5rem); margin-block: 24px; }
