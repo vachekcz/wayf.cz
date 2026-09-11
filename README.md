@@ -63,6 +63,8 @@ projektů sleduje [issue #6](https://github.com/vachekcz/wayf.cz/issues/6).
 neveřejné stránky případně vyřaď přes `filter` v integraci. URL vycházejí ze `site`
 v `astro.config.mjs`, takže preview do sitemap neposílá své adresy. Endpoint
 `src/pages/robots.txt.ts` generuje povolení procházení a odkaz na sitemap index.
+Adresa `/sitemap.xml` přes `public/_redirects` trvale přesměrovává na sitemap index;
+smoke ověřuje přesměrování i obsah cílových XML souborů.
 Cloudflare může před `robots.txt` připojit vlastní pravidla; produkční smoke proto
 ověřuje neporušený konec souboru z buildu. U ostatních souborů porovnává celý obsah.
 

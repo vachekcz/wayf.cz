@@ -60,7 +60,7 @@ async function verifyDirectory(relativePath = '') {
     if (entry.isDirectory()) {
       await verifyDirectory(`${path}/`);
     } else if (entry.isFile()) {
-      if (path === 'index.html' || path === '_headers') continue;
+      if (path === 'index.html' || path === '_headers' || path === '_redirects') continue;
       await verifyFile(path);
     }
   }
@@ -68,6 +68,19 @@ async function verifyDirectory(relativePath = '') {
 
 await verifyFile('index.html');
 await verifyDirectory();
+await withRetry(async () => {
+  const response = await fetch(new URL('/sitemap.xml', baseUrl), {
+    redirect: 'manual',
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.equal(response.status, 301, 'Sitemap alias must permanently redirect');
+  assert.equal(
+    new URL(response.headers.get('location') ?? '', baseUrl).href,
+    new URL('/sitemap-index.xml', baseUrl).href,
+    'Sitemap alias must redirect to the sitemap index on the same origin',
+  );
+});
+console.log('PASS sitemap.xml redirects to the sitemap index');
 const missing = await fetch(new URL('/__wayf_smoke_missing__', baseUrl), {
   signal: AbortSignal.timeout(5000),
 });
