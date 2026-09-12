@@ -13,5 +13,5 @@
 
 ## Dopad
 
-<!-- User-visible change: record an event in the canonical feature log. -->
+<!-- User-visible change: describe the resulting behavior and link any documentation updated in this PR. -->
 <!-- Independent follow-ups belong in linked issues. -->
