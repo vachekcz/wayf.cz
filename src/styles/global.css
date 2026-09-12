@@ -83,6 +83,7 @@ svg { display: block; }
 .small-star { font-family: sans-serif; font-size: 1.25rem; }
 .hero h1 { font-size: clamp(4rem, 8.8vw, 7.75rem); line-height: 0.88; letter-spacing: -0.025em; margin-block: 28px; }
 .hero h1 > span:first-of-type { color: var(--green); }
+.hero-tagline { display: block; margin-top: 0.28em; font-size: 0.42em; letter-spacing: 0; color: var(--muted); }
 .hero-lead { font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.45; max-width: 560px; }
 .hero-description { color: var(--muted); max-width: 510px; margin-top: 16px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 24px 32px; align-items: center; margin-top: 30px; }
@@ -175,6 +176,7 @@ svg { display: block; }
   .hero { padding-top: 40px; }
   .hero .eyebrow { font-size: 1.0625rem; letter-spacing: 0.04em; }
   .hero h1 { font-size: clamp(3rem, 13.9vw, 5rem); margin-block: 24px; }
+  .hero-tagline { margin-top: 0.3em; }
   .hero-lead { font-size: 1.25rem; }
   .hero-description { font-size: 1.125rem; }
   .desktop-break { display: none; }
