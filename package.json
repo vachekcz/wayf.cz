@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "check": "astro check",
+    "check": "wrangler types && astro check",
     "build": "astro build",
     "preview": "wrangler dev",
     "deploy:check": "wrangler deploy --dry-run",
@@ -16,7 +16,7 @@
     "smoke": "node scripts/smoke.mjs",
     "deploy:preview": "wrangler versions upload",
     "lighthouse": "lhci autorun",
-    "test:ci": "node --test scripts/ci/*.test.mjs"
+    "test:ci": "node --test scripts/ci/*.test.mjs tests/*.test.mjs"
   },
   "dependencies": {
     "astro": "7.3.2",

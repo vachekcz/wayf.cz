@@ -29,8 +29,8 @@ Vývojový server běží na <http://localhost:4321>.
 
 | Příkaz | Účel |
 | --- | --- |
-| `npm run check` | Kontrola Astro komponent a TypeScriptu |
-| `npm run test:ci` | Testy vyhodnocení CI reportů |
+| `npm run check` | Generování Workers typů a kontrola Astro komponent a TypeScriptu |
+| `npm run test:ci` | Testy CI reportů a doménového přesměrování |
 | `npm run build` | Statický build do `dist/` |
 | `npm run deploy:check` | Kontrola balení pro Workers bez nasazení; vyžaduje build |
 | `npm run preview` | Lokální Workers runtime na <http://localhost:8787>; vyžaduje build |
@@ -50,10 +50,13 @@ Smoke můžeš nasměrovat na jinou adresu: `npm run smoke -- https://example.wo
 - `src/pages/index.astro` — homepage; další stránky přidávej do `src/pages/`.
 - `src/styles/global.css` — neonový vzhled a responzivní rozložení.
 - `public/` — finální logo `weareyourfriends-logo-vector.svg`, favicon a náhled pro sdílení `og-image.png` (1200 × 630 px).
-- `wrangler.jsonc` — Worker `wayf-cz`, publikuje pouze `dist/`.
+- `src/worker.ts` — přesměrování `www` na hlavní doménu a předání ostatních požadavků statickým assets.
+- `wrangler.jsonc` — Worker `wayf-cz`, domény a statické assets z `dist/`.
 
-Astro generuje statické HTML a malý skript hvězdného pole. Cloudflare adaptér ani
-serverový Worker skript nejsou potřeba. Font VT323 se načítá lokálně ze dvou WOFF2
+Astro generuje statické HTML a malý skript hvězdného pole. Cloudflare adaptér není
+potřeba. Malý Worker zpracuje doménové přesměrování před assets (`run_worker_first`),
+takže přesměruje i existující soubory; požadavky proto procházejí Workers runtime.
+Font VT323 se načítá lokálně ze dvou WOFF2
 sad v `src/assets/fonts/`, včetně českých znaků. Latin sada se přednačítá pro hlavní
 nadpis; soubory dostávají hash při buildu. Původ fontu je v `SOURCE.md`, licence
 se publikuje na `/fonts/VT323-OFL.txt`. Omezení pohybu zastaví animace.
@@ -83,6 +86,12 @@ Google Search Console již spravuje majitel. Pro odeslání sitemapy použij
 V Cloudflare zóně `wayf.cz` je zapnuté **Always Use HTTPS**: HTTP požadavky vrací
 301 na HTTPS se zachováním cesty a parametrů. Toto nastavení je na úrovni zóny,
 Wrangler ho nespravuje. Produkční smoke ověřuje i toto přesměrování.
+
+`www.wayf.cz` je druhá Workers Custom Domain. `src/worker.ts` vrací HTTP 301
+na `https://wayf.cz` se zachováním cesty a parametrů. HTTP varianta může nejprve
+projít přes HTTPS na `www` kvůli Always Use HTTPS. Produkční smoke ověřuje oba
+protokoly, homepage, existující soubory i neexistující cestu s kódovanými parametry.
+Lokální testy ověřují handler; veřejné DNS a TLS ověří až produkční smoke.
 
 Kontakt doplň do `src/data/contact.ts` až po potvrzení veřejné adresy a identity
 provozovatele. Prázdný e-mail skryje celou kontaktní sekci
@@ -160,13 +169,15 @@ Environment `production` má povolovat deploy pouze z větve `main`. V ochraně
 `main` vyžaduj PR a check `CI Passed`. Konfiguraci doplň před prvním mergem,
 jinak se deploy zastaví na chybějícím nastavení. Hodnoty tokenů nepatří do repozitáře.
 
-`wrangler.jsonc` připojuje `wayf.cz` jako Workers Custom Domain; routu spravuje
-každý deploy z CI. Adresa `wayf-cz.pvpvpv.workers.dev` zůstává dostupná.
+`wrangler.jsonc` připojuje `wayf.cz` a `www.wayf.cz` jako Workers Custom Domains;
+obě připojení včetně DNS a certifikátů spravuje Cloudflare při deployi z CI.
+Adresa `wayf-cz.pvpvpv.workers.dev` zůstává dostupná.
 Pro veřejné směrování musí doména používat nameservery své Cloudflare zóny:
 `lady.ns.cloudflare.com` a `luke.ns.cloudflare.com`. Jejich nastavení u registrátora
 není součástí deploye. `DEPLOY_URL` nastav na `https://wayf.cz`, až na ní projde
-smoke kontrola; do té doby ověřuje `workers.dev`. Přesměrování `www` se nastavuje
-zvlášť. `site` v Astro konfiguraci určuje canonical URL; DNS nemění.
+smoke kontrola; do té doby ověřuje `workers.dev`. Přesměrování `www` je součástí
+Workeru a nevyžaduje oprávnění Dynamic URL Redirects ani samostatné zónové pravidlo.
+`site` v Astro konfiguraci určuje canonical URL; DNS nemění.
 
 Dokumentace: [Astro](https://docs.astro.build/),
 [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/),
