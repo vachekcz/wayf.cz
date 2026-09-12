@@ -40,6 +40,9 @@ Kotvy mají malé odsazení od horního okraje; není potřeba prostor pro pevno
 
 **H1:** We Are Your Friends
 
+**Motto v H1:** You are not alone. Třetí, menší řádek nadpisu v tlumené
+barvě textu; doplňuje název značky, nekonkuruje mu.
+
 **Hlavní sdělení:** Tvoříme užitečné projekty pro každodenní život.
 
 **Doprovodný text:** Od jídla a pohybu po porozumění vlastnímu rozhodování.
