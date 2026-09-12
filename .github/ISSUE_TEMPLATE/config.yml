@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Technická dokumentace
+    url: "https://github.com/vachekcz/wayf.cz/blob/main/README.md#struktura"
+    about: Reference, invarianty, runbooky a schválené návrhy u kódu.
+  - name: Produktový kontext a archiv
+    url: "https://github.com/vachekcz/wayf.cz/wiki"
+    about: Historie, pracovní podklady a přílohy.

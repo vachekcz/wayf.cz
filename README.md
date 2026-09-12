@@ -8,6 +8,14 @@ We Are Your Friends, projekty Bertička, Arnoldek a Why We Decide a hodnoty, kte
 Zadání obsahu a dokončení homepage: [Web v1](docs/web-v1.md).
 Průběh ověření a zbývající body: [Stav implementace](docs/homepage-v1-status.md).
 
+## Úkoly a review
+
+Zadání a chyby evidujeme v [GitHub Issues](https://github.com/vachekcz/wayf.cz/issues).
+Formulář **Úkol** přiřadí `task`, formulář **Bug** přiřadí `bug`.
+Význam dalších štítků a dokončení práce přes připravený PR popisuje
+[AGENTS.md](./AGENTS.md#úkoly-a-štítky). V PR používej `Related to #N`.
+Produktové plány a souvislosti jsou ve [wiki](https://github.com/vachekcz/wayf.cz/wiki).
+
 ## Lokální vývoj
 
 Používej Node 24 (viz `.nvmrc`) a npm s verzemi závislostí z `package-lock.json`.
