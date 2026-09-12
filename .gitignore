@@ -10,3 +10,4 @@ dist/
 *.log
 .lighthouseci/
 reports/
+worker-configuration.d.ts

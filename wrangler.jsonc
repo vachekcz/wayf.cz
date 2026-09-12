@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "wayf-cz",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-09-10",
   "workers_dev": true,
   "preview_urls": true,
@@ -9,9 +10,23 @@
       "pattern": "wayf.cz",
       "custom_domain": true,
       "zone_name": "wayf.cz"
+    },
+    {
+      "pattern": "www.wayf.cz",
+      "custom_domain": true,
+      "zone_name": "wayf.cz"
     }
   ],
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
   }
 }

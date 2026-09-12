@@ -42,11 +42,11 @@ Zpětné odkazy v jednotlivých projektech nebyly měněny.
 1. Doplnit a ověřit skutečný veřejný e-mail a přesné znění identity provozovatele.
    Potom zkontrolovat i vykreslený kontakt a `mailto:`.
 2. Aktuálně schválený obsah: čeština a portfolio Bertička, Arnoldek, Why We Decide.
-3. Rozhodnout o doménových variantách. `wayf.cz` už má Cloudflare Custom Domain
-   a úspěšný produkční CI smoke z předchozího nasazení. `www.wayf.cz` při kontrole
-   zobrazovalo parkovací stránku; `weareyourfriends.cz` má samostatný starší web.
-   Ani jedna varianta nyní nepřesměrovává na WAYF. Tato implementace jejich DNS
-   ani obsah nemění.
+3. `wayf.cz` a `www.wayf.cz` spravuje Wrangler jako Workers Custom Domains.
+   Oprava [#20](https://github.com/vachekcz/wayf.cz/issues/20) doplňuje chybějící
+   připojení `www` a trvalé přesměrování na `https://wayf.cz` včetně cesty a query;
+   ověřuje je produkční smoke. `weareyourfriends.cz` má samostatný starší web,
+   o jeho roli zbývá rozhodnout.
 4. Po mergi ověřit produkční GitHub Actions deploy, HTTPS a smoke nové homepage.
 
 Lokální kontroly nepotvrzují nasazení této nové verze na produkci.

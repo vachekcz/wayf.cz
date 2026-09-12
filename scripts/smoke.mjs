@@ -103,4 +103,28 @@ if (baseUrl.hostname === 'wayf.cz') {
     assert.equal(response.headers.get('location'), `https://wayf.cz${path}`, 'HTTPS redirect must preserve path and query');
   });
   console.log('PASS HTTP permanently redirects to HTTPS');
+
+  for (const path of ['/', '/favicon.svg', '/sitemap.xml', '/__wayf_www_check__/a%2Fb?source=smoke&value=a%2Fb&value=c+d']) {
+    for (const protocol of ['https:', 'http:']) {
+      await withRetry(async () => {
+        const target = `https://wayf.cz${path}`;
+        let url = `${protocol}//www.wayf.cz${path}`;
+        for (let hop = 0; hop < 2 && url !== target; hop++) {
+          const response = await fetch(url, {
+            redirect: 'manual',
+            signal: AbortSignal.timeout(5000),
+          });
+          assert.ok([301, 308].includes(response.status), `WWW must permanently redirect: ${url}`);
+          const location = response.headers.get('location');
+          assert.ok(
+            location === target || (protocol === 'http:' && hop === 0 && location === `https://www.wayf.cz${path}`),
+            `Unexpected WWW redirect target: ${location}`,
+          );
+          url = location;
+        }
+        assert.equal(url, target, 'WWW must reach HTTPS apex within two permanent redirects');
+      });
+    }
+  }
+  console.log('PASS HTTP and HTTPS WWW permanently redirect to apex with path and query intact');
 }
